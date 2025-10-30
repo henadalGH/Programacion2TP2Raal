@@ -1,0 +1,20 @@
+<body>
+<h1 class="titulo">Listado de los clientes </h1>
+
+<table border="1" class="tabla">
+
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Situacion</th>
+
+@for (cl of clientes2; track $index) {
+    
+    <tr>
+        <td>{{cl.Nombre}}</td>
+        <td>{{cl.Apellido}}</td>
+        <td>@if(cl.Status == 1 ) {<span style ="text-align:center;color:yellow;background-color:green"> Activo</span>} @else {<span style ="text-align:center;color:yellow;background-color:red"> Inactivo</span>}</td>
+    </tr>
+}
+</table>
+
+</body>

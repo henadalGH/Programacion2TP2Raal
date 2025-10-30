@@ -1,0 +1,61 @@
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background-color: #0c57a1;
+    color: rgb(250, 246, 36);
+    font-weight: 400;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover {
+    opacity: 0.8;
+  }
+  .toolbar a {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 25px;
+    
+  }
+  ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.botones{
+  padding: 10px;
+  background-color: aqua;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.spacer{
+  margin-left: 10%;
+}
+/* Change the link color to #111 (black) on hover */

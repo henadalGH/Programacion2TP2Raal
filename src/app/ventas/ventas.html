@@ -1,0 +1,24 @@
+<body>
+<h1>Ventas Mensuales Por Sucursal</h1>
+    
+    <div class="eleccion">
+        <h3>Selecciones una sucursal</h3>
+    
+    @for (suc of Suc; track $index) {
+        <input type="checkbox">
+        <label for="">{{suc.Nombre_Suc}}</label>
+    }
+    </div>
+    <div class="tabla" [innerHTML]="generarTabla()"></div>
+
+    <h2>Graficos de las ventas por mes</h2>
+    
+    <div class="botones">
+            <button class="botnes_graf" (click)="crearGrafico('boton1')">Mostrar Línea</button>
+            <button class="botnes_graf" (click)="crearGrafico('boton2')">Mostrar Barra</button>
+    </div>
+
+    <canvas class="graficos" id="grafico" width="200" height="100"></canvas>
+
+</body>
+

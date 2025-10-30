@@ -1,0 +1,20 @@
+<body>
+    <h1 class="titulo">Nuestras Sucursales</h1>
+
+    <table class="tabla" border="1">
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Cantidad empleados</th>
+
+        @for (suc of sucursales; track $index) {
+            <tr>
+                <td>{{suc.Nombre_Suc}}</td>
+                <td>{{suc.Dir_Suc}}</td>
+                <td>{{suc.Cant_Emp_Suc}}</td>
+            </tr>
+        }
+
+    </table>
+    
+
+</body>
