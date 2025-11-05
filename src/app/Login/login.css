@@ -1,7 +1,30 @@
 .login-container{
- margin-top: 200px;
- border: 1px solid;
+    margin: 25%;
+    border: 1px solid;
+    padding: 25px;
+    text-align: center;
+    background-color: azure;
+    border-radius: 15px;
+    
+    
 }
 
-label{
-    margin: 10px;}
+.Inputs{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+input{
+    margin-left: 10px;
+}
+
+button{
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+

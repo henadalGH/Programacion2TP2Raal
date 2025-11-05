@@ -1,16 +1,31 @@
-<div class="login-container">
+
+
+  <div class="login-container">
+    <h1>Bienvenidos</h1>
     <h2>Iniciar Sesión</h2>
 
-<form (ngSubmit)="login()">
-    <label>Usuario:</label>
-    <input [(ngModel)]="email" name="usuario" required />
+      <div class="formulario">
+        <form (ngSubmit)="login()">
+          <div class="Inputs">
+            <label>Correo electronico:</label>
+            <input [(ngModel)]="email" name="usuario" required />
+          </div>
 
-    <label>Contraseña:</label>
-    <input [(ngModel)]="password" name="clave" type="password" required />
+          <div class="Inputs">
+            <label>Contraseña:</label>
+          <input [(ngModel)]="password" name="clave" type="password" required />
+          </div>
+    
+          <button type="submit">Entrar</button>
+        </form>
 
-    <button type="submit">Entrar</button>
-</form>
+      </div>
 
-  <!-- <p *ngIf="error" class="error">{{ error }}</p> -->
-</div>
+      @if (error) {
+      <p class="error-msg">{{ error }}</p>
+    }
+
+  </div>
+  
+
 

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Reloj } from '../reloj/reloj';
+
 
 @Component({
   selector: 'app-footer',
-  imports: [Reloj],
+  imports: [],
   templateUrl: './footer.html',
   styleUrl: './footer.css'
 })

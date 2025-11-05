@@ -1,22 +1,29 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { Reloj } from "./reloj/reloj";
-import { Footer } from "./footer/footer";
-import { Sucursales} from "./sucursales/sucursales";
-import { Home } from "./home/home";
+import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { Header } from "./header/header";
-
-
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterLink, RouterOutlet, Reloj, Footer, Sucursales, Home, Header],
+  standalone: true,
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'],
+  imports: [Header, RouterOutlet]
 })
 export class App {
-   public navVisible: boolean= true;
-  protected title = 'proy25';
-  barra ():void {this.navVisible = !this.navVisible;}
+  showHeader = true;
+
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        const url = (event as NavigationEnd).urlAfterRedirects || (event as NavigationEnd).url;
+
+        // Ocultar el header en rutas específicas
+        this.showHeader = !(
+          url.startsWith('/login') 
+        );
+      });
+  }
 }

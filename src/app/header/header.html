@@ -22,14 +22,14 @@
       <li><a routerLink="./inicio">Inicio</a> </li>
         <li><a routerLink ="./sucursales">Nuestras Sucursales</a></li>
         <li><a routerLink="./clientes">Ver Clientes</a></li>
-        <li><a routerLink="./Ventas/">Ver Ventas</a></li>
+        <li><a routerLink="./Ventas">Ver Ventas</a></li>
     </nav>     
 
       </ul>
       }
         <div>
           <button class="botones" (click)=barra()>{{ButName}}</button>
-          <button class="botones" routerLink="login">Login</button>
+          <button mat-button class="botones" (click)="logout()" >Logout</button>
         </div>
             
       </div>
