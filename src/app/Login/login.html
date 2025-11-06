@@ -1,31 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>Correo electronico:</label>
+  <input formControlName="email" />
 
+  <label>Contraseña:</label>
+  <input type="password" formControlName="password" />
 
-  <div class="login-container">
-    <h1>Bienvenidos</h1>
-    <h2>Iniciar Sesión</h2>
+  <button type="submit">Iniciar sesión</button>
 
-      <div class="formulario">
-        <form (ngSubmit)="login()">
-          <div class="Inputs">
-            <label>Correo electronico:</label>
-            <input [(ngModel)]="email" name="usuario" required />
-          </div>
-
-          <div class="Inputs">
-            <label>Contraseña:</label>
-          <input [(ngModel)]="password" name="clave" type="password" required />
-          </div>
-    
-          <button type="submit">Entrar</button>
-        </form>
-
-      </div>
-
-      @if (error) {
-      <p class="error-msg">{{ error }}</p>
-    }
-
-  </div>
   
-
-
+</form>
