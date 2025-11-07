@@ -38,7 +38,11 @@ constructor (private authServi: AuthService,
     if(this.form.valid){
       const {email, password} = this.form.value;
       this.authServi.login(email, password).subscribe({
-        next: ()=> console.log('login completo')
+        next: (res)=> {
+          const user = res.usuario
+          console.log('login completo');
+          localStorage.setItem('rol', res.user.rol);
+        }
       });
     }
 

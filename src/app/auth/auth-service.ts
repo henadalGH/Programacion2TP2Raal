@@ -26,14 +26,20 @@ export class AuthService {
         if(response && response.success){
           this.loggedIn.next(email);
           localStorage.setItem('email', email);
+          
           this.router.navigate(['/inicio']);
         }
         else {
           alert('usuario o contraseña incorrecto')
         }
       }
-    )
-    )
+    ));
+  }
+
+  getRoles() : String | null{
+    return localStorage.getItem('rol')
+
   }
   
+
 }
