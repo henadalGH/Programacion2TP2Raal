@@ -7,15 +7,39 @@
         <th>Direccion</th>
         <th>Cantidad empleados</th>
 
-        @for (suc of sucursales; track $index) {
+        @for (suc of sucursales; track suc.Nombre_Suc) {
             <tr>
                 <td>{{suc.Nombre_Suc}}</td>
                 <td>{{suc.Dir_Suc}}</td>
                 <td>{{suc.Cant_Emp_Suc}}</td>
             </tr>
         }
-
     </table>
+
+
+   <!--  <div class="agregarSucursal">
+        <h3>Agregar una nueva sucursal</h3>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(nombreSuc, direccion, empleados)">
+        
+        <div class="campos">
+            <label for="">Nombre sucursal:</label>
+            <input type="text" formControlName="nombre_suc">
+        </div>
+
+        <div class="campos">
+            <label for="">Dirección:</label>
+            <input type="text" formControlName="direccion">
+        </div>
+
+        <div class="campos">
+            <label for="">Cantidad de empleados:</label>
+            <input type="number" formControlName="empleados">
+        </div>
+
+        <button type="submit">Agregar Sucursal</button>
     
+        </form>
+    </div> -->
+
 
 </body>

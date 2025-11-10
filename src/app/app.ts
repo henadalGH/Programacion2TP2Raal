@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Header } from "./header/header";
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Header } from "./header/header";
   standalone: true,
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
-  imports: [Header, RouterOutlet]
+  imports: [Header, RouterOutlet, FormsModule]
 })
 export class App {
   showHeader = true;

@@ -27,3 +27,16 @@ h1{
     width: 28%;
     text-align: center;
 }
+
+.campos{
+    margin-top:  15px;
+}
+
+input{
+    margin-left: 20px;
+}
+
+button{
+    padding: 10px;
+    margin-top: 20px;
+}

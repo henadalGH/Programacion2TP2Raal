@@ -13,7 +13,6 @@ export class LoginServicio {
 
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiUrl, { email: email, password: password});
-  } 
+  }
 
-  
 } 

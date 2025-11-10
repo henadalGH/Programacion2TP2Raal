@@ -18,7 +18,7 @@ constructor (private authServi: AuthService,
   private formsB: FormBuilder){ }
 
   ngOnInit(): void {
-    this.form = this.formsB.group(
+    this.form = this.formsB.group( 
       {
         email: ['', Validators.required],
         password: ['', Validators.required]

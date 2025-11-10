@@ -12,6 +12,8 @@ authServi = inject(AuthService);
 router = inject(Router);
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
+
+    
     console.log({route , state});
     const userRol = this.authServi.getRoles();
     const expectedRole = route.data['role'];

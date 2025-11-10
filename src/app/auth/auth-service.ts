@@ -33,7 +33,7 @@ export class AuthService {
           alert('usuario o contraseña incorrecto')
         }
       }
-    ));
+    )); 
   }
 
   getRoles() : String | null{
