@@ -41,7 +41,7 @@ constructor (private authServi: AuthService,
         next: (res)=> {
           const user = res.usuario
           console.log('login completo');
-          localStorage.setItem('rol', res.user.rol);
+          localStorage.setItem('rol', res.usuario.rol);
         }
       });
     }

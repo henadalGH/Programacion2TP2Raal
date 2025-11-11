@@ -26,6 +26,7 @@ export class AuthService {
         if(response && response.success){
           this.loggedIn.next(email);
           localStorage.setItem('email', email);
+          localStorage.setItem('rol', response.rol);
           
           this.router.navigate(['/inicio']);
         }

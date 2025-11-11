@@ -16,10 +16,10 @@ export class Sucursales implements OnInit {
 form!: FormGroup;
 
 
-  onSubmit(nombre_suc: string, direccion: string, empleados: number) {
+  /* nSubmit(nombre_suc: string, direccion: string, empleados: number) {
     return this.httpServicio.agregarSucursal(nombre_suc, direccion, 
       empleados); 
-}
+} */
 
   
   constructor( private httpServicio: SucursalesServicio)
