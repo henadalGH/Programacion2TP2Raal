@@ -1,42 +1,56 @@
-body{
-    height: 80vh;
-    background-image: linear-gradient(
-        45deg,
-        rgba(248, 229, 57, 0.5),
-        rgba(75, 32, 228, 0.5)
-    )
-    ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;}
-h1{
-   text-align: center;
-   margin-top: 100px;
-   font-size: 80px;
-   color: rgb(204, 41, 41);
+.tabla {
+  margin: 20px auto; 
+  border-collapse: collapse;
+  background-color: rgb(126, 93, 93); 
+  border: 1px solid #ccc;
+  width: 80%; 
+  border-radius: 25px;
+
+  border-radius: 15px;       
+  overflow: hidden;         
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
 }
 
-.tabla{
-    margin: auto;
-    width: 30%;
-    text-align: center;
+.tabla th,
+.tabla td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  background-color: white;
 }
 
-.checkbox{
-    margin: auto;
-    width: 28%;
-    text-align: center;
-}
-
-.campos{
-    margin-top:  15px;
-}
-
-input{
-    margin-left: 20px;
+.tabla th {
+  background-color: #887e7e;
 }
 
 button{
-    padding: 10px;
-    margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+
+  display: block;
+  margin: 0 auto;
+  background-color: rgb(112, 214, 214);
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
 }
+h1{
+  text-align: center;
+  font-size: 60px;   
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+button:hover{
+  background-color: #1E3A8A;
+  color: white;
+}
+
+body {
+  margin-top: 100px;
+}
+
+

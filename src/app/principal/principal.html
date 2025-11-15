@@ -1,0 +1,45 @@
+
+    <div class="imagen">
+        <div class="titulos">
+            <h1>BIENVENIDOS A</h1>
+            <h1>NUESTRA EMPRESA</h1>
+            <h2>“La buena venta empieza con una buena escucha.”</h2>
+        </div>
+        
+            <div class="parrafo">
+                <p>Nos dedicamos a la venta de los mejores parafusos del país.</p>
+                <p>Tanto importados como de producción Local.</p>
+                <p>ingresa para onocenos mejor.</p>
+            </div>
+        
+    </div>
+
+<div class="ingresar">
+    <p>Si tienen cuenta, ingresa aquí:</p>
+    <a [routerLink]="['/login']"><button class="btn-agresar">Ingresar</button></a>
+</div>
+
+
+    <div class="tabla_Suc">
+        
+
+        <div class="tabla">
+            <table class="tabla" border="1">
+        <th>Nombre</th>
+        <th>Direccion</th>
+                @for (suc of sucursales; track $index) {
+                    <tr>
+            <td>{{suc.Nombre_Suc}}</td>
+            <td>{{suc.Dir_Suc}}</td>
+        </tr>
+        }
+        
+    </table>
+        </div>
+
+
+
+
+
+
+

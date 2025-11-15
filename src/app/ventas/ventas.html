@@ -1,24 +1,60 @@
-<body>
-<h1>Ventas Mensuales Por Sucursal</h1>
+<div class="ventas-page">
+    <div class="ventas-container">
+        <h1 class="titulo">Ventas Mensuales Por Sucursal</h1>
     
-    <div class="eleccion">
-        <h3>Selecciones una sucursal</h3>
+        <div class="eleccion">
+        <h3>Seleccio las sucuarsales que desea ver</h3>
     
-    @for (suc of Suc; track $index) {
-        <input type="checkbox">
-        <label for="">{{suc.Nombre_Suc}}</label>
-    }
+        <div class="checkbox-list">
+            <label *ngFor="let suc of Suc; let s = index" class="checkbox-item">
+                <input type="checkbox" [checked]="selectedSuc[s]" (change)="toggleSucursal(s, $event.target.checked)" />
+                <span>{{ suc.Nombre_Suc }}</span>
+            </label>
+        </div>
     </div>
-    <div class="tabla" [innerHTML]="generarTabla()"></div>
 
+    <!-- Tabla de ventas -->
+    <div class="tabla-container">
+        <table border="1" class="tabla">
+            <thead>
+                <tr>
+                    <th>Mes / Sucursal</th>
+                                        <ng-container *ngFor="let suc of Suc; let s = index">
+                                            <th *ngIf="isSelected(s)">{{ suc.Nombre_Suc }}</th>
+                                        </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let mes of Mes; let m = index">
+                    <th>{{ mes.Mes }}</th>
+                    <ng-container *ngFor="let suc of Suc; let s = index">
+                      <td *ngIf="isSelected(s)" (click)="iniciarEdicion(m, s)" class="celda-editable">
+                        {{ ventaMes[m] ? ventaMes[m]['Suc' + (s + 1)] : 0 }}
+                      </td>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div *ngIf="editando" class="panel-edicion">
+            <h4>Editando: {{ Mes[editando.mes].Mes }} - {{ Suc[editando.suc].Nombre_Suc }}</h4>
+            <div class="edit-input-group acciones">
+                <label>Nuevo valor:</label>
+                <input type="number" [(ngModel)]="valorTemporal" class="edit-input">
+                <button (click)="guardarCambio()" class="btn">Guardar</button>
+                <button (click)="cancelarEdicion()" class="btn btn--alt">Cancelar</button>
+            </div>
+        </div>
+    </div>
     <h2>Graficos de las ventas por mes</h2>
     
-    <div class="botones">
-            <button class="botnes_graf" (click)="crearGrafico('boton1')">Mostrar Línea</button>
-            <button class="botnes_graf" (click)="crearGrafico('boton2')">Mostrar Barra</button>
+    <div class="botones_acciones">
+            <button class="btn" (click)="crearGrafico('boton1')">Mostrar Línea</button>
+            <button class="btn btn--alt" (click)="crearGrafico('boton2')">Mostrar Barra</button>
     </div>
 
     <canvas class="graficos" id="grafico" width="200" height="100"></canvas>
 
-</body>
+  </div>
+</div>
 

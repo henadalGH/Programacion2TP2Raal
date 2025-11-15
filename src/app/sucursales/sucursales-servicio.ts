@@ -17,7 +17,11 @@ export class SucursalesServicio {
   }
 
 
-  agregarSucursal(nombre_suc: string, direccion: string, empleados: number): Observable<any>{
-    return this.http.post<any>(this.urlApi, {nombre_suc: nombre_suc, direccion: direccion, empleados: empleados});
+  agregarSucursal(nombre: string, direccion: string, empleado: number): Observable<any> {
+    return this.http.post<any>(this.urlApi, {
+      nombre: nombre,
+      direccion: direccion,
+      empleado: empleado
+    });
   }
 }

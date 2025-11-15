@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { VentasServicio } from './ventas-servicio';
 import { SucursalesServicio } from '../sucursales/sucursales-servicio';
 import { Chart, ChartConfiguration } from 'chart.js/auto';
@@ -7,6 +9,7 @@ import { Chart, ChartConfiguration } from 'chart.js/auto';
   selector: 'app-ventas',
   templateUrl: './ventas.html',
   standalone: true,
+  imports: [CommonModule, FormsModule],
   styleUrls: ['./ventas.css'],
   providers: [VentasServicio, SucursalesServicio]
 })
@@ -16,7 +19,12 @@ export class Ventas implements OnInit {
   Suc: any[] = [];
   Mes: any[] = [];
   tablaHTML: string = '';
-  chart: Chart | null = null; 
+  chart: Chart | null = null;
+  selectedSuc: boolean[] = []; // estado de selección de sucursales
+  
+  // Variables para edición
+  editando: { mes: number; suc: number } | null = null;
+  valorTemporal: number = 0;
 
   constructor(
     private httpVentas: VentasServicio,
@@ -34,9 +42,13 @@ export class Ventas implements OnInit {
     const datasets: any[] = [];
 
     for (let s = 0; s < this.Suc.length; s++) {
+      // solo incluir sucursales seleccionadas
+      if (!this.isSelected(s)) continue;
       const ventasSuc: number[] = [];
       for (let m = 0; m < this.Mes.length; m++) {
-        ventasSuc.push(this.ventaMes[m][`Suc${s + 1}`]);
+        const row = this.ventaMes[m] || {};
+        const val = row[`Suc${s + 1}`];
+        ventasSuc.push(typeof val === 'number' || !isNaN(Number(val)) ? Number(val) : 0);
       }
 
       datasets.push({
@@ -73,7 +85,6 @@ export class Ventas implements OnInit {
   obtenerVentasSucursales() {
     this.httpVentas.ObtenerVentas().subscribe((ventas: any) => {
       this.ventaMes = ventas;
-      this.generarTabla();
       if (this.Suc.length > 0 && this.Mes.length > 0) {
         this.crearGrafico('boton1'); // Gráfico inicial
       }
@@ -83,7 +94,8 @@ export class Ventas implements OnInit {
   obtenerSucursales() {
     this.httpSucursales.obtenerSucursales().subscribe((suc: any) => {
       this.Suc = suc;
-      this.generarTabla();
+      
+      this.selectedSuc = this.Suc.map(() => true);
     });
   }
 
@@ -93,24 +105,60 @@ export class Ventas implements OnInit {
     });
   }
 
+  
+  iniciarEdicion(mes: number, suc: number) {
+    this.editando = { mes, suc };
+    this.valorTemporal = this.ventaMes[mes][`Suc${suc + 1}`];
+  }
+
+  toggleSucursal(index: number, checked: boolean) {
+    this.selectedSuc[index] = checked;
+    this.crearGrafico('boton1');
+  }
+
+  
+  isSelected(index: number): boolean {
+    return this.selectedSuc && this.selectedSuc[index];
+  }
+
+  
+  guardarCambio() {
+    if (this.editando) {
+      const { mes, suc } = this.editando;
+      const columna = `Suc${suc + 1}`;
+      const fila = this.ventaMes[mes].id;
+      const nuevoValor = this.valorTemporal;
+
+      this.httpVentas.editarVenta(columna, fila, nuevoValor).subscribe(
+        (response: any) => {
+          if (response.success) {
+            this.ventaMes[mes][`Suc${suc + 1}`] = nuevoValor;
+            this.editando = null;
+            this.crearGrafico('boton1');
+          } else {
+            alert('Error al actualizar la venta');
+          }
+        },
+        (error) => {
+          alert('Error en la comunicación con el servidor');
+          console.error(error);
+        }
+      );
+    }
+  }
+
+ 
+  cancelarEdicion() {
+    this.editando = null;
+    this.valorTemporal = 0;
+  }
+
+  
+  estaEditando(mes: number, suc: number): boolean {
+    return this.editando !== null && this.editando.mes === mes && this.editando.suc === suc;
+  }
+
   generarTabla() {
-    let tablaHTML = '<table border="1">';
-    tablaHTML += '<tr><th>Mes / Sucursal</th>';
-
-    for (let f = 0; f < this.Suc.length; f++) {
-      tablaHTML += `<th>${this.Suc[f].Nombre_Suc}</th>`;
-    }
-
-    for (let m = 0; m < this.Mes.length; m++) {
-      tablaHTML += '<tr>';
-      tablaHTML += `<th>${this.Mes[m].Mes}</th>`;
-      for (let f = 0; f < this.Suc.length; f++) {
-        tablaHTML += `<td>${this.ventaMes[m][`Suc${f + 1}`]}</td>`;
-      }
-      tablaHTML += '</tr>';
-    }
-
-    tablaHTML += '</table>';
-    return tablaHTML;
+    return this.ventaMes;
   }
 }

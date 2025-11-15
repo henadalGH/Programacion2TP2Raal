@@ -1,7 +1,7 @@
  :host {
   display: block;
   min-height: 100vh;
-  background-color: rgb(88, 123, 160);
+  background-color: rgb(213, 208, 208);
 
   /* Si el header está visible */
 .con-header {
@@ -176,3 +176,4 @@
     
   }
 
+  

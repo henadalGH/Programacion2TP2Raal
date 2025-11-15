@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.imagen {
+  background: #ffffff;
+  padding: 80px 40px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.titulos h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.titulos h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #7f8c8d;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.parrafo {
+  margin-top: 30px;
+}
+
+.parrafo p {
+  font-size: 1rem;
+  color: #555;
+  margin: 8px 0;
+}
+
+.ingresar {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fafafa;
+}
+
+.ingresar p {
+  margin-bottom: 15px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.btn-agresar {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-agresar:hover {
+  background-color: #2980b9;
+}
+
+.tabla_Suc {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.tabla {
+  width: 90%;
+  max-width: 500px;
+  border-collapse: collapse;
+}
+
+.tabla th {
+  background-color: #34495e;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #34495e;
+}
+
+.tabla td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  color: #444;
+}
+
+.tabla tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tabla tr:hover {
+  background-color: #ecf0f1;
+}

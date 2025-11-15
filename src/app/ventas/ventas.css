@@ -1,54 +1,108 @@
-body{
-    height: 80vh;
-    background-image: linear-gradient(
-        0deg,
-        rgba(240, 248, 250, 0.5),
-        rgba(22, 6, 65, 0.5)
-    )
-    ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;}
-h1{
+/* estilos sencillos y discretos para ventas */
+
+.ventas-page{
+  
+  background: #dce5ed;
+  min-height: calc(100vh - 90px);
+  padding: 24px 12px;
+  box-sizing: border-box;
+}
+
+
+.ventas-container{
+    max-width: 920px;
+    margin: 28px auto;
+    padding: 22px;
+    background: transparent; 
+    border-radius: 10px;
+    box-shadow: none; 
+    border: none;
+}
+
+.titulo, h1{
     text-align: center;
-    margin-top: 100px;
-    font-size: 80px;
-    color: rgb(47, 6, 112);
+    font-size: 34px;
+    margin: 8px 0 18px;
+    color: #d4a257; /* acento dorado, discreto */
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.resumen{
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
 .tabla{
-    text-align: center;
-    margin: auto;
-    width: 33%;
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 50px;
+    
 }
+
+.tabla th, .tabla td{
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 14px;
+}
+
+.tabla th{
+    background: #eaf4ff; 
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+.tabla tr:nth-child(even){ background: #fbfbfd; }
+.tabla tr:hover{ background: #f0f7ff; }
+
+.tabla tr:last-child td{ border-bottom: none; }
+
+
+.btn{
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: linear-gradient(135deg,#1976d2,#1565c0);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    margin-right: 15px;
+}
+
+.acciones{ display:flex; gap:8px; align-items:center; }
 
 .eleccion{
-    
+    margin: auto;
+    width: 60%;
     text-align: center;
-    margin: auto;
-    width: 50%;
-    padding: 25px;
 }
-/* .graficos{
-    margin: 50%;
-} */
 
-.botnes_graf{
-    /* margin: 15px; */
-    padding: 10px;
-    margin: auto;
-    width: 10%;
-    
-    
+h3{
+  text-align: center;
+}
+
+.panel-edicion{
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  font-size: 20px;
+}
+
+.botones_acciones{
+  margin: auto;
+  width: 50%;
 }
 
 h2{
-    text-align: center;
-    font-size: 50px;
-    
-}
-
-.graficos{
-    margin: auto;
-    width: 90%;
+  text-align: center;
+  margin-top: 30px;
 }

@@ -1,20 +1,29 @@
-<body>
-<h1 class="titulo">Listado de los clientes </h1>
+    <body>
+    <div class="titulo">
+        <h1 class="titulo">Listado de los clientes</h1>
+    </div>
 
-<table border="1" class="tabla">
+    <div class="tabla-wrapper">
+        <table class="tabla" border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Situación</th>
+        </tr>
 
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Situacion</th>
-
-@for (cl of clientes2; track $index) {
-    
-    <tr>
-        <td>{{cl.Nombre}}</td>
-        <td>{{cl.Apellido}}</td>
-        <td>@if(cl.Status == 1 ) {<span style ="text-align:center;color:yellow;background-color:green"> Activo</span>} @else {<span style ="text-align:center;color:yellow;background-color:red"> Inactivo</span>}</td>
-    </tr>
-}
-</table>
-
-</body>
+        @for (cl of clientes2; track $index) {
+            <tr>
+            <td>{{cl.Nombre}}</td>
+            <td>{{cl.Apellido}}</td>
+            <td>
+                @if(cl.Status == 1) {
+                <span class="activo">Activo</span>
+                } @else {
+                <span class="inactivo">Inactivo</span>
+                }
+            </td>
+            </tr>
+        }
+        </table>
+    </div> 
+    </body>

@@ -1,0 +1,25 @@
+
+<body>
+    <div class="formulario">
+            <form [formGroup]="formulario" (ngSubmit)="agregarSucursal()">
+        <div class="campo">
+            <label>Nombre:</label>
+            <input formControlName="nombre" type="text" />
+        </div>
+
+        <div class="campo">
+            <label>Dirección:</label>
+            <input formControlName="direccion" type="text" />
+        </div>
+
+        <div class="campo">
+            <label >Cantidad de empleados:</label>
+            <input formControlName="empleado" type="number" />
+        </div>
+
+        <button type="submit">Agregar sucursal</button>
+        </form>
+
+         <a [routerLink]="['/sucursales']"><button class="btn-agresar">Cancelar</button></a>
+    </div>    
+</body>

@@ -1,22 +1,46 @@
-body{
-    height: 80vh;
-    background-image: linear-gradient(
-        0deg,
-        rgba(247, 232, 98, 0.5),
-        rgba(92, 4, 4, 0.5)
-    )
-    ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;}
-.titulo{
-   text-align: center;
-   margin-top: 100px;
-   font-size: 80px;
-   color: rgb(47, 6, 112);
+body {
+  margin-top: 100px;
+  
 }
 
-.tabla{
-    text-align: center;
-    margin: auto;
+.titulo{
+  text-align: center;
+  font-size: 60px;
+}
+
+/* --- TABLA --- */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;  /* fondo de las celdas */
+}
+
+.tabla th,
+.tabla td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+
+.tabla th {
+  background-color: #887e7e;
+  color: white;
+  font-weight: bold;
+}
+
+/* --- ESTADOS --- */
+.activo {
+  color: yellow;
+  background-color: green;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.inactivo {
+  color: yellow;
+  background-color: red;
+  padding: 5px 10px;
+  border-radius: 5px;
 }

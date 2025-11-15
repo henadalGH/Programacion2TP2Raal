@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { SucursalesServicio } from './sucursales-servicio';
-import { RouterOutlet } from "@angular/router";
+import { RouterOutlet, RouterLinkWithHref } from "@angular/router";
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth/auth-service';
 
 
 @Component({
   selector: 'app-sucursales',
-  imports: [RouterOutlet, FormsModule, ReactiveFormsModule], 
+  imports: [CommonModule, RouterOutlet, FormsModule, ReactiveFormsModule, RouterLinkWithHref], 
   templateUrl: './sucursales.html',
   styleUrls: ['./sucursales.css'], 
   providers: [SucursalesServicio]
@@ -14,26 +16,26 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class Sucursales implements OnInit {
 
 form!: FormGroup;
-
-
-  /* nSubmit(nombre_suc: string, direccion: string, empleados: number) {
-    return this.httpServicio.agregarSucursal(nombre_suc, direccion, 
-      empleados); 
-} */
+isAdmin: boolean = false;
 
   
-  constructor( private httpServicio: SucursalesServicio)
-  {}
+
+  
+  constructor( 
+    private httpServicio: SucursalesServicio,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-
+    // Verificar rol del usuario
+    const rol = this.authService.getRoles();
+    this.isAdmin = rol === 'role_admin';
+    
     this.obtenerSucursales();
   }
     
     sucursales: any[] = [];
-    nombreSuc: string = '';
-    direccion: string = '';
-    empleados: number = 0;
+    
 
 obtenerSucursales(){
   this.httpServicio.obtenerSucursales().subscribe((sucursales : any) => {

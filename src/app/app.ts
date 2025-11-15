@@ -23,7 +23,8 @@ export class App {
 
         // Ocultar el header en rutas específicas
         this.showHeader = !(
-          url.startsWith('/login') 
+          url.startsWith('/login') ||
+          url.startsWith('/principal') 
         );
       });
   }
